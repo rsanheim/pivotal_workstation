@@ -28,22 +28,6 @@ execute "move existing vim_home out of the way if necessary" do
   }
 end
 
-execute "clone the .vim directory" do
-  user WS_USER
-  command "git clone https://github.com/pivotal/vim-config.git #{node["vim_home"]}"
-  not_if "cd #{node["vim_home"]} && git remote -v | grep pivotal/vim-config"
-end
-
-execute "ensure we're on the approved hash" do
-  user WS_USER
-  command "cd #{node["vim_home"]} && git checkout #{node["vim_hash"]}"
-end
-
-execute "get the submodules" do
-  user WS_USER
-  command "cd #{node["vim_home"]} && git submodule update --init"
-end
-
 link "#{WS_HOME}/.vimrc" do
   to "#{node["vim_home"]}/vimrc"
   owner WS_USER
