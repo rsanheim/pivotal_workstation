@@ -32,12 +32,6 @@ end
 
 brew_install "ctags"
 
-execute "compile command-t" do
-  cwd "#{node["vim_home"]}/bundle/command-t/ruby/command-t"
-  command "ruby extconf.rb && make"
-  user WS_USER
-end
-
 ruby_block "test to see if MacVim link worked" do
   block do
     raise "/Applications/MacVim install failed" unless File.exists?("/Applications/MacVim.app/Contents")
