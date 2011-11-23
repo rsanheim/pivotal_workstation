@@ -1,4 +1,5 @@
 include_recipe "pivotal_workstation::user_owns_usr_local"
+include_recipe "pivotal_workstation::bash_path_order"
 
 homebrew_git_revision_hash  = version_string_for("homebrew")
 
@@ -30,4 +31,8 @@ ruby_block "Check that homebrew is running & working" do
       raise "Couldn't find brew"
     end
   end
+end
+
+directory "/usr/local/sbin" do
+  owner WS_USER
 end
