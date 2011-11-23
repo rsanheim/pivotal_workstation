@@ -1,0 +1,13 @@
+cookbook_paths:
+- ../
+recipes:
+- pivotal_workstation::meta_osx_base
+- pivotal_workstation::meta_osx_development
+- pivotal_workstation::meta_ruby_development
+
+# More recipes I like
+- pivotal_workstation::gitx
+- pivotal_workstation::iterm_set_defaults
+- pivotal_workstation::safari_preferences
+- pivotal_workstation::terminal_preferences
+- pivotal_workstation::terminal_focus
